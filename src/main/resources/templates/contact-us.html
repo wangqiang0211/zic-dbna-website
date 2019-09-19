@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>联系我们_成都仙德科技有限公司</title>
+    <meta content="" name="keywords"/>
+    <meta content="" name="description"/>
+    <link th:href="@{'/dbna/css/style.css'}" rel="stylesheet" type="text/css"/>
+    <link rel="icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <style>a {
+        color: #000;
+    }</style>
+</head>
+<body>
+<div class="logo">
+    <div class="logo_l">
+        <img height="67" th:attr="src=@{'/dbna/img/logo1.png'}" alt="" width="394"/>
+    </div>
+    <div class="logo_r">
+        <ul class="logo_r1">
+            <li>
+                <span>
+                    <img height="11" th:attr="src=@{'/dbna/img/l_1.png'}" width="13"/>
+                </span>
+                <a href="javascript:;" th:href="@{'/contact-us'}">联系我们</a>
+            </li>
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_2.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--<a href="javascript:void(0);" onclick="AddFavorite('我的网站',location.href)">加入收藏</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_3.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--<a href="javascript:void(0);" onclick="SetHome(this,'http://www.cdxdkj.net');">设为首页</a>-->
+            <!--</li>-->
+        </ul>
+        <div class="logo_r2">
+            <p>
+                <span th:text="${person.usValue}"></span>
+                <bdo th:text="${person.usKey}"></bdo>
+                <span th:text="${hotline.usValue}"></span>
+                <bdo th:text="${hotline.usKey}"> </bdo>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="dh" th:style="'background:url(' + @{'/dbna/img/dh_bg.jpg'} + ');'">
+    <ul>
+        <ul>
+            <li>
+                <a href="javascript:;" th:href="@{'/index'}">首页</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/about'}">关于我们</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/airlist'}">五恒空调</a>
+            </li>
+            <li>
+                <a href="javascript:;" th:href="@{'/newlist'}">新闻资讯</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/product-list'}">产品展示</a>
+            </li>
+            <li>
+                <a href="javascript:;" th:href="@{'/project-list'}">工程案例</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/video-list'}">视频展播</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/contact-us'}">联系我们</a></li>
+        </ul>
+    </ul>
+</div>
+<div class="l_banner" th:style="'background:url(' + @{'/dbna/img/lxwo_1.jpg'} + '); height:230px;'">
+    <div class="l_bt">
+        <a th:href="@{'/contact-us'}">联系我们</a>
+    </div>
+</div>
+<div class="nr">
+    <div class="gl_a">
+        <bdo><a href="#gsjs">公司地址</a></bdo>
+        <bdo><a href="#gswh">营销中心</a></bdo>
+        <bdo><a href="#ryzz">售后中心</a></bdo>
+    </div>
+    <!--<p class="gl_b">DEBEINA</p>-->
+    <!--<p class="gl_c">成都仙德科技有限公司</p>-->
+    <div class="lx_a">
+        <div class="lx_al">
+            <!--全部遍历 好处灵活好控制-->
+            <!--<div th:each="news:${newsPage.list}" style="margin: 10px auto;">-->
+            <!--<p>-->
+            <!--<b>-->
+            <!--<span style="font-size:20px;" th:text="${news.usKey}"></span>-->
+            <!--</b>-->
+            <!--<b>-->
+            <!--<span style="font-size:18px;" th:text="${news.usValue}"></span>-->
+            <!--</b>-->
+            <!--</p>-->
+            <!--</div>-->
+
+            <!--条件遍历 样式和官网一样-->
+            <div th:each="news:${newsPage.list}">
+                <div>
+                    <b th:if="${news.usKey}=='全国招商电话：' or ${news.usKey}=='全国客服电话：' or ${news.usKey}=='负责人电话：'">
+                        <span style="font-size:20px;" th:text="${news.usKey}"></span>
+                    </b>
+                    <b th:if="${news.usKey}=='全国招商电话：' or ${news.usKey}=='全国客服电话：' or ${news.usKey}=='负责人电话：'">
+                        <span style="font-size:20px;" th:text="${news.usValue}"></span>
+                    </b>
+                </div>
+            </div>
+            <br/>&nbsp;
+            <div th:each="news:${newsPage.list}">
+                <div class="dn">
+                    <h2 th:if="${news.usKey}=='集团总公司：'">
+                        <span style="font-size:18px;" th:text="${news.usKey}"></span>
+                    </h2>
+                    <span th:if="${news.usKey}=='总公司电话：' or ${news.usKey}=='总公司网站：' or ${news.usKey}=='总公司地址：'">
+                        <span style="font-size:18px;" th:text="${news.usKey}"></span>
+                    </span>
+
+                    <h2 th:if="${news.usKey}=='集团总公司：'">
+                        <span style="font-size:18px;" th:text="${news.usValue}"></span>
+                    </h2>
+                    <span th:if="${news.usKey}=='总公司电话：' or ${news.usKey}=='总公司网站：' or ${news.usKey}=='总公司地址：'">
+                        <span style="font-size:18px;" th:text="${news.usValue}"></span>
+                    </span>
+                </div>
+            </div>
+            <br/>&nbsp;
+            <div th:each="news:${newsPage.list}">
+                <div class="dn">
+                    <h2 th:if="${news.usKey}=='生产基地：'">
+                        <span style="font-size:19px;" th:text="${news.usKey}"></span>
+                    </h2>
+                    <span th:if="${news.usKey}=='生产电话：' or ${news.usKey}=='生产地址：'">
+                        <span style="font-size:18px;" th:text="${news.usKey}"></span>
+                    </span>
+
+                    <h2 th:if="${news.usKey}=='生产基地：'">
+                        <span style="font-size:19px;" th:text="${news.usValue}"></span>
+                    </h2>
+                    <span th:if="${news.usKey}=='生产电话：' or ${news.usKey}=='生产地址：'">
+                        <span style="font-size:18px;" th:text="${news.usValue}"></span>
+                    </span>
+                </div>
+            </div>
+            <br/>&nbsp;
+            <div th:each="news:${newsPage.list}">
+                <div class="dn">
+                    <h2 th:if="${news.usKey}=='营销中心：'">
+                        <span style="font-size:19px;" th:text="${news.usKey}"></span>
+                    </h2>
+                    <span th:if="${news.usKey}=='电话：' or ${news.usKey}=='地址：'">
+                        <span style="font-size:18px;" th:text="${news.usKey}"></span>
+                    </span>
+                    <h2 th:if="${news.usKey}=='营销中心：'">
+                        <span style="font-size:19px;" th:text="${news.usValue}"></span>
+                    </h2>
+                    <span th:if="${news.usKey}=='电话：' or ${news.usKey}=='地址：'">
+                        <span style="font-size:18px;" th:text="${news.usValue}"></span>
+                    </span>
+                </div>
+            </div>
+            <br/>&nbsp;
+            <p th:each="news:${newsPage4.list}">
+                &nbsp; &nbsp; &nbsp;
+                <span th:if="${news.usType==3}"><img alt="" th:src="${news.usKey}"
+                                                     style="width: 150px; height: 149px;"/></span>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <span th:if="${news.usType==3}"><img alt="" th:src="${news.usValue}"
+                                                     style="width: 150px; height: 149px;"/></span>
+            </p>
+            <p>
+                <span style="font-size:16px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;微信公众号 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 负责人微信号 &nbsp;</span>
+            </p>
+        </div>
+        <!--<br>-->
+        <!--地图信息-->
+        <div class="lx_ar">
+            <iframe th:replace="map.html" height="808" width="503" frameborder="0" marginheight="0" marginwidth="0"
+                    scrolling="no">
+            </iframe>
+        </div>
+        <p style=" clear:both;">&nbsp;</p>
+    </div>
+
+</div>
+
+<div class="fotr">
+    <a th:href="@{'/index'}">首页</a> |
+    <a th:href="@{'/about'}">关于我们</a> |
+    <a th:href="@{'/airlist'}">五恒空调</a> |
+    <a th:href="@{'/newlist'}">新闻资讯</a> |
+    <a th:href="@{'/product-list'}">产品展示</a> |
+    <a th:href="@{'/project-list'}">工程案例</a> |
+    <a th:href="@{'/video-list'}">视频展播</a> |
+    <a th:href="@{'/contact-us'}">联系我们</a>
+</div>
+
+<div class="fotr_a">
+    <p>
+        版权所有：成都仙德科技有限公司 Copyright 2019 @ All Serviced 蜀ICP备19014083号-1</p>
+    <!--<p>服务热线：400-0896-897&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 营销中心电话：028-83355015</p>-->
+</div>
+<div align="center">
+    <div><img th:attr="src=@{'/dbna/img/2-1FZF03JK04.gif'}" alt=""/></div>
+</div>
+<script type="text/javascript" charset="UTF-8" th:attr="src=@{'/dbna/js/jquery3.2.1.js'}"></script>
+<script type="text/javascript">
+    /*加入收藏*/
+    function AddFavorite(title, url) {
+        try {
+            window.external.addFavorite(url, title);
+        }
+        catch (e) {
+            try {
+                window.sidebar.addPanel(title, url, "");
+            }
+            catch (e) {
+                alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请使用Ctrl+D进行添加");
+            }
+        }
+    }
+
+    /*设为首页*/
+    function SetHome(obj, url) {
+        try {
+            obj.style.behavior = 'url(#default#homepage)';
+            obj.setHomePage(url);
+        } catch (e) {
+            if (window.netscape) {
+                try {
+                    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                } catch (e) {
+                    alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
+                }
+            } else {
+                alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【" + url + "】设置为首页。");
+            }
+        }
+    }
+</script>
+
+</body>

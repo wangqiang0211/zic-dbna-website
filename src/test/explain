@@ -1,0 +1,11 @@
+涉及到的文件：修改路径及配置
+1.（style.css）静态样式路径设置了固定war包名：web
+2.上传图片也用了固定war包名： web
+3.config.json:设置路径（域名ip）
+4.UEditorController.java:设置路径
+5.FileController.java ：上传图片保存路径
+6.ImgUpload.java ：上传图片保存路径
+7.ZicTemplateApplication.java:项目启动设置
+8.application.properties:修改图片保存路径及设置缓存
+9.pom.xml:指定包的类型和配置容器
+10.log4j2.xml:打印日志输出级别

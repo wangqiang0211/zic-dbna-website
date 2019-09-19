@@ -1,0 +1,896 @@
+@charset "utf-8";
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, code, del, em, img, dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "微软雅黑", "宋体", "Arial Unicode MS";
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.c_lv {
+    color: #4b9c02;
+}
+
+.c_hs {
+    color: #f00;
+}
+
+.c_hs a {
+    color: #f00;
+}
+
+.c_hs a:hover {
+    color: #f00;
+    text-decoration: underline;
+}
+
+.logo {
+    width: 1000px;
+    height: 66px;
+    margin: auto;
+    padding: 10px 0;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+.dn{overflow: hidden;}
+.logo_l {
+    float: left;
+}
+
+.logo_r {
+    float: right;
+    font-size: 14px;
+    color: #656565;
+}
+
+.logo_r a {
+    color: #656565;
+}
+
+.logo_r1 {
+    height: 30px;
+    line-height: 30px;
+    width: 500px;
+    padding-top: 15px;
+}
+
+.logo_r1 li {
+    float: right;
+    padding-left: 10px;
+}
+
+.logo_r2 {
+    font-size: 14px;
+    color: #333;
+    height: 20px;
+    line-height: 20px;
+    text-align: right;
+}
+
+.logo_r2 span {
+    font-size: 22px;
+    color: #27a40a;
+    font-weight: bold;
+}
+
+.logo_r2 bdo, .logo_r2 span {
+    float: right;
+}
+
+.dh {
+    padding-top: 1px;
+    height: 40px;
+    line-height: 40px;
+    background-image: url("/web/dbna/img/dh_bg.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/dh_bg.jpg*/;
+    background-repeat: repeat-x;/*水平方法允许重复*/
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+.dh ul {
+    width: 1000px;
+    margin: 0 auto;
+    background-image: url("/web/dbna/img/dh_bg3.png") /*tpa=http://www.scdebeina.com/templets/dbn/images/dh_bg3.png*/;
+    background-repeat: no-repeat;/*只显示一次*/
+    background-position: center top;
+    height: 40px;
+}
+
+.dh ul li {
+    width: 122px;
+    text-align: center;
+    float: left;
+    background-image: url("/web/dbna/img/dh_g.png") /*tpa=http://www.scdebeina.com/templets/dbn/images/dh_g.png*/;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.dh ul li:last-child {
+    background: none;
+}
+
+.banner {
+    height: 375px;
+    background-image: url("/web/dbna/img/banner.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/banner.jpg*/;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.lma {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 2px;
+    height: 280px;
+    background-image: url("/web/dbna/img/ww.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/ww.jpg*/;
+    background-repeat: no-repeat;
+    background-position: 330px 0px;
+}
+
+.lma1 {
+    width: 610px;
+    float: left;
+}
+
+.lma1_a {
+    padding: 0 5px;
+    font-size: 16px;
+    background-image: url("/web/dbna/img/x.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/x.jpg*/;
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    height: 30px;
+    line-height: 30px;
+
+}
+
+.lma1_b {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.lma1_b dt {
+    width: 250px;
+    height: 150px;
+    float: left;
+    padding-top: 5px;
+}
+
+.lma1_b dd {
+    float: right;
+    font-size: 14px;
+    width: 330px;
+    line-height: 26px;
+    color: #333333;
+}
+
+.lma1_b dd h6 {
+    font-size: 16px;
+    color: #000;
+}
+
+.lma2 {
+    float: right;
+    width: 370px;
+}
+
+.lma1_a bdo {
+    float: left;
+}
+
+.lma1_a em {
+    float: right;
+    font-size: 12px;
+    background-color: #4b9c02;
+    color: #fff;
+    display: block;
+    font-style: normal;
+    padding: 0 10px;
+    overflow: hidden;
+    height: 20px;
+    line-height: 22px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.lma1_a em a {
+    color: #fff;
+}
+
+.lma2a {
+    padding-top: 10px;
+}
+
+.lma2a li {
+    height: 30px;
+    padding-top: 5px;
+    line-height: 30px;
+    border-bottom: 1px dashed #CCC;
+    font-size: 14px;
+    color: #606060;
+    background-image: url("/web/dbna/img/dian.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/dian.jpg*/;
+    background-repeat: no-repeat;
+    background-position: 5px 20px;
+    padding-left: 13px;
+}
+
+.lma2a li a {
+    color: #606060;
+}
+
+.lmb {
+    width: 1000px;
+    margin: 0 auto;
+    border: 1px solid #dedede;
+    background-color: #fff;
+    height: 550px;
+}
+
+.lmb1 {
+    background-color: #f0f0f0;
+    height: 39px;
+    line-height: 39px;
+}
+
+.lmb1 em {
+    float: right;
+    font-size: 12px;
+    background-color: #4b9c02;
+    color: #fff;
+    display: block;
+    font-style: normal;
+    padding: 0 10px;
+    overflow: hidden;
+    height: 20px;
+    line-height: 22px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.lmb1 em a {
+    color: #fff;
+}
+
+.lmb1 bdo {
+    float: left;
+}
+
+.lmb1 img {
+    float: left;
+    height: 39px;
+}
+
+.cp {
+    padding: 10px;
+    width: 310px;
+    float: left;
+}
+
+.cp dt {
+    width: 280px;
+    height: 180px;
+    border: 1px solid #dfdfdf;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.cp dd {
+    text-align: center;
+    line-height: 30px;
+}
+
+.cp dd a {
+    color: #333;
+}
+
+.lmb2 {
+    padding-top: 10px;
+}
+
+.fotr {
+    background-color: #4c9c05;
+    margin-top: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.fotr_a {
+    font-size: 14px;
+    line-height: 30px;
+    padding-top: 5px;
+    text-align: center;
+    color: #666;
+}
+
+.l_banner {
+    height: 300px;
+    background-image: url("/web/dbna/img/l_banner.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/l_banner.jpg*/;
+    position: relative;
+}
+
+.l_bt {
+    position: absolute;
+    bottom: -15px;
+    height: 40px;
+    line-height: 35px;
+    text-align: center;
+    background-image: url("/web/dbna/img/xa.png") /*tpa=http://www.scdebeina.com/templets/dbn/images/xa.png*/;
+    background-repeat: no-repeat;
+    background-position: center top;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+}
+
+.nr {
+    padding-top: 50px;
+    min-height: 300px;
+    margin: 0 auto;
+    width: 1000px;
+    background-color: #fff;
+}
+
+.list_a {
+    padding: 0 15px;
+    height: 170px;
+}
+
+.list_a dt {
+    width: 200px;
+    height: 125px;
+    padding: 5px;
+    border: 1px solid #e6e6e6;
+    background-image: url("/web/dbna/img/tu_bg.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/tu_bg.jpg*/;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    float: left;
+}
+
+.list_a dt img {
+    width: 200px;
+    height: 125px;
+}
+
+.list_a dd {
+    float: right;
+    width: 740px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #666;
+}
+
+.list_a dd h5 {
+    font-size: 16px;
+    border-bottom: 1px dashed #CCC;
+    font-weight: normal;
+    color: #000;
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+.list_a dd h5 bdo {
+    float: left;
+}
+
+.list_a dd h5 span {
+    float: right;
+}
+
+/*.ym {*/
+/*text-align: center;*/
+/*}*/
+
+
+.ym{ text-align:center; height:75px; clear:both; padding:10px 0;}
+
+.pagsss{
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10px;
+    color: #3379b6;
+}
+
+.al_bt {
+    font-size: 32px;
+    font-weight: normal;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #CCC;
+    margin: 10px 10px;
+}
+
+.al_nr {
+    font-size: 14px;
+    line-height: 30px;
+    color: #666;
+    padding: 20px;
+}
+
+.al_nr img {
+    max-width: 900px;
+    margin: 10px auto;
+    display: inline;
+}
+
+.gl_a {
+    text-align: center;
+}
+
+.gl_a bdo {
+    font-size: 14px;
+    line-height: 30px;
+    color: #333;
+    display: inline-block;
+    padding: 2px;
+    height: 30px;
+    width: 200px;
+    border: 1px solid #999;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.gl_a bdo a {
+    color: #333;
+}
+
+.gl_a bdo a:hover {
+    color: #900;
+}
+
+.gl_b {
+    text-align: center;
+    font-size: 38px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.gl_c {
+    text-align: center;
+    font-size: 16px;
+    height: 30px;
+    margin: 0 30px;
+    line-height: 30px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.gl_d {
+    padding-top: 30px;
+    height: 185px;
+}
+
+.gl_d li {
+    border: 1px solid #e0e0e0;
+    float: left;
+    padding: 5px;
+    margin-left: 35px;
+    width: 275px;
+    border-radius: 5px;
+}
+
+.gl_e {
+    padding: 30px;
+    font-size: 14px;
+    line-height: 28px;
+    color: #5d5d5d;
+    text-indent: 2em;
+}
+
+.gl_e h1 {
+    border-bottom: 1px solid #e0e0e0;
+    color: #000;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.gl_f {
+    padding-top: 30px;
+    height: 215px;
+}
+
+.gl_f li {
+    border: 1px solid #e0e0e0;
+    float: left;
+    padding: 10px;
+    margin-left: 50px;
+    width: 160px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 35px;
+}
+
+.lx_a {
+    padding: 30px;
+    font-size: 14px;
+    color: #666;
+    line-height: 30px;
+}
+
+.lx_al {
+    float: left;
+    overflow: auto;
+    zoom: 1;
+    width: 400px;
+}
+
+.lx_ar {
+    float: right;
+    width: 500px;
+    height: 300px;
+    border: 1px solid #e0e0e0;
+}
+
+.lx_al h2 {
+    font-size: 16px;
+    color: #000;
+    font-weight: normal;
+    border-bottom: 1px solid #CCC;
+    float: left;
+    line-height: 25px;
+    padding: 10px 20px 0px 2px;
+}
+
+.lx_al p {
+    clear: both;
+}
+
+.sp_a {
+    padding: 30px;
+}
+
+.dh ul li a {
+    color: #FFF;
+}
+
+.dh ul .hover a {
+    color: #F30;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5) !important;
+}
+
+.fotr a {
+    color: #FFF;
+}
+
+.al_fot {
+    border-top: 1px solid #e0e0e0;
+    margin: 30px;
+    height: 60px;
+    line-height: 30px;
+    padding: 10px 5px;
+    font-size: 14px;
+}
+
+.al_fot a {
+    color: #666;
+}
+
+.l_bt a {
+    color: #fff;
+}
+
+.nr bdo a {
+    color: #000;
+}
+
+.dede_pages {
+}
+
+.dede_pages ul {
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.dede_pages ul li {
+    display: inline-block;
+    PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 2px;
+    MARGIN: 2px;
+    COLOR: #fff;
+    min-width: 20px;
+    display: inline-block;
+    PADDING-TOP: 2px;
+    BACKGROUND-COLOR: #ee4e4e;
+    TEXT-DECORATION: none;
+    border-radius: 2px;
+
+}
+
+.dede_pages ul li a {
+
+    COLOR: #fff;
+
+}
+
+.dede_pages ul li:hover {
+    COLOR: #fff;
+    BACKGROUND-COLOR: #de1818;
+}
+
+.dede_pages ul li:hover a {
+    COLOR: #fff;
+}
+
+.dede_pages ul li.thisclass a, .pagebox ul li.thisclass a:hover {
+    color: #F63;
+    padding: 2px 4px 1px;
+    border-bottom: 2px solid #F63;
+    font-weight: bold;
+}
+
+.dede_pages .pageinfo {
+    float: right;
+    line-height: 21px;
+    color: #fff;
+}
+
+.dede_pages .pageinfo strong {
+    color: #fff;
+    font-weight: normal;
+    margin: 0px 2px;
+}
+
+.thisclass {
+    PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 2px;
+    min-width: 20px;
+    display: inline-block;
+    MARGIN: 2px;
+    COLOR: #6d643c !important;
+    PADDING-TOP: 2px;
+    BACKGROUND-COLOR: #f6efcc !important;
+}
+
+.dede_pages ul li select {
+    border: none;
+    padding: 1px;
+}
+
+#focus {
+    width: 100%;
+    height: 375px;
+    position: relative;
+    background-color: #FFFFFF;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#focus #hotpic {
+    width: 100%;
+    height: 375px;
+    overflow: hidden;
+    background-color: #CCCCCC;
+}
+
+#focus #hotpic li {
+    display: none;
+    height: 375px;
+    padding: 0px;
+    width: 100%;
+}
+
+#focus #hotpic li span {
+    display: block;
+    width: 100%;
+    height: 375px;
+}
+
+#focus .carousel {
+    text-align: center;
+    clear: both;
+    height: 20px;
+    position: absolute;
+    margin-top: 350px;
+    overflow: hidden;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+    width: 100%;
+    padding: 0px;
+}
+
+#focus .carousel li {
+    width: 20px;
+    display: inline-block;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    text-align: center;
+    line-height: 16px;
+    font-size: 13px;
+    font-weight: bold;
+    list-style-type: none;
+    margin-left: 3px;
+    font-weight: normal;
+}
+
+#focus .carousel .bg {
+    height: 16px;
+    background-color: #333;
+    color: #FFF;
+}
+
+#focus .carousel .active {
+    color: #fff;
+    background-color: #ff6600;
+    width: 30px;
+}
+
+.blk_18 {
+    width: 940px;
+    height: 185px;
+    font-size: 12px;
+    overflow: hidden;
+    zoom: 1;
+    margin-bottom: 20px;
+    text-indent: 0;
+}
+
+.blk_18 .pcont {
+    width: 880px;
+    float: left;
+    overflow: hidden;
+}
+
+.blk_18 .ScrCont {
+    width: 1000%;
+    zoom: 1;
+}
+
+.blk_18 .LeftBotton {
+    width: 30px;
+    height: 160px;
+    float: left;
+    background-image: url("/web/dbna/img/left.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/left.jpg*/;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.blk_18 .RightBotton {
+    width: 30px;
+    height: 160px;
+    float: left;
+    background-image: url("/web/dbna/img/right.jpg") /*tpa=http://www.scdebeina.com/templets/dbn/images/right.jpg*/;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.blk_18 li {
+    float: left;
+    width: 210px;
+    LINE-height: 24px;
+    text-align: center;
+    height: 160px;
+    padding: 5px;
+    margin: 0px;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.blk_18 li img {
+    width: 210px;
+    height: 140px;
+    margin: 0;
+}
+
+.blk_18 li span {
+    display: block;
+    line-height: 15px;
+    font-size: 13px;
+    clear: both;
+}
+
+#List1_1, #List2_1 {
+    float: left;
+}
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px
+}
+
+.pagination > li {
+    display: inline
+}
+
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+    z-index: 2;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7
+}
+
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd
+}
+
+.pagination-lg > li > a, .pagination-lg > li > span {
+    padding: 10px 16px;
+    font-size: 15px;
+    line-height: 1.3333333
+}
+
+.pagination-lg > li:first-child > a, .pagination-lg > li:first-child > span {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px
+}
+
+.pagination-lg > li:last-child > a, .pagination-lg > li:last-child > span {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px
+}
+
+.pagination-sm > li > a, .pagination-sm > li > span {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.pagination-sm > li:first-child > a, .pagination-sm > li:first-child > span {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.pagination-sm > li:last-child > a, .pagination-sm > li:last-child > span {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px
+}
+

@@ -1,0 +1,9 @@
+th:href="@{''}"
+th:background="@{''}"
+th:attr="src=@{''}"
+th:inline="javascript"
+th:inline="none"
+
+ /*<![CDATA[*/
+    var path = [[${path}]];
+    /*]]>*/

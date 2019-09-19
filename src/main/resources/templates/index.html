@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="baidu-site-verification" content="Mb55ZJ2ggk"/>
+    <title>成都仙德科技有限公司</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link th:href="@{'/dbna/css/style.css'}" rel="stylesheet" type="text/css"/>
+    <link rel="icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link>
+    <style>a {
+        color: #000;
+    }</style>
+</head>
+<body class="index">
+<div class="logo">
+    <div class="logo_l">
+        <img height="67" th:attr="src=@{'/dbna/img/logo1.png'}" alt="" width="394"/>
+    </div>
+    <div class="logo_r">
+        <ul class="logo_r1">
+            <li>
+                <span>
+                    <img height="11" th:attr="src=@{'/dbna/img/l_1.png'}" width="13"/>
+                </span>
+                <a href="javascript:;" th:href="@{'/contact-us'}">联系我们</a></li>
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_2.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--&lt;!&ndash;<a href="javascript:window.external.AddFavorite('index.htm'/*tpa=http://www.scdebeina.com/*/,'成都仙德智诚实业有限公司')">加入收藏</a>&ndash;&gt;-->
+            <!--<a href="#">加入收藏</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_3.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--&lt;!&ndash;<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('index.htm'/*tpa=http://www.scdebeina.com/*/);">设为首页</a>&ndash;&gt;-->
+            <!--<a href="#">设为首页</a>-->
+            <!--</li>-->
+        </ul>
+        <div class="logo_r2">
+            <p>
+                <span th:text="${person.usValue}"></span>
+                <bdo th:text="${person.usKey}"></bdo>
+                <span th:text="${hotline.usValue}"></span>
+                <bdo th:text="${hotline.usKey}"> </bdo>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="dh">
+    <ul>
+        <ul>
+            <li>
+                <a th:href="@{'/index'}">首页</a></li>
+            <li>
+                <a th:href="@{'/about'}">关于我们</a></li>
+            <li>
+                <a th:href="@{'/airlist'}">五恒空调</a>
+            </li>
+            <li>
+                <a th:href="@{'/newlist'}">新闻资讯</a></li>
+            <li>
+                <a th:href="@{'/product-list'}">产品展示</a>
+            </li>
+            <li>
+                <a th:href="@{'/project-list'}">工程案例</a></li>
+            <li>
+                <a th:href="@{'/video-list'}">视频展播</a></li>
+            <li>
+                <a th:href="@{'/contact-us'}">联系我们</a></li>
+        </ul>
+    </ul>
+</div>
+
+<!-- /header -->
+<div class="banner">
+    <div id="focus">
+        <ol class="carousel">
+            <li class="active" id="t0" onmouseover="Mea(0);clearAuto();" onmouseout="setAuto();">1</li>
+            <li class="bg" id="t1" onmouseover="Mea(1);clearAuto();" onmouseout="setAuto();">2</li>
+            <li class="bg" id="t2" onmouseover="Mea(2);clearAuto();" onmouseout="setAuto();">3</li>
+        </ol>
+        <ul id="hotpic">
+            <li style="display:block;">
+                <span th:style="'background:url(' + @{'/dbna/img/xdbanner.jpg'} + '); background-repeat:no-repeat; background-position:center center'"></span>
+            </li>
+            <li>
+                <span th:style="'background:url(' + @{'/dbna/img/banner2.jpg'} + '); background-repeat:no-repeat; background-position:center center'"></span>
+            </li>
+            <li>
+                <span th:style="'background:url(' + @{'/dbna/img/banner3.jpg'} + '); background-repeat:no-repeat; background-position:center center'"></span>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var n = 0;
+
+        function Mea(value) {
+            n = value;
+            setBg(value);
+            plays(value);
+        }
+
+        function setBg(value) {
+            for (var i = 0; i < 3; i++)
+                document.getElementById("t" + i + "").className = "bg";
+            document.getElementById("t" + value + "").className = "active";
+        }
+
+        function plays(value) {
+            try {
+                with (hotpic) {
+                    filters[0].Apply();
+                    for (i = 0; i < 3; i++) i == value ? children[i].style.display = "block" : children[i].style.display = "none";
+                    filters[0].play();
+                }
+            }
+            catch (e) {
+                var d = document.getElementById("hotpic").getElementsByTagName("li");
+                for (i = 0; i < 3; i++) i == value ? d[i].style.display = "block" : d[i].style.display = "none";
+            }
+        }
+
+        function clearAuto() {
+            clearInterval(autoStart)
+        }
+
+        function setAuto() {
+            autoStart = setInterval("auto(n)", 4000)
+        }
+
+        function auto() {
+            n++;
+            if (n > 2) n = 0;
+            Mea(n);
+        }
+
+        setAuto();
+    </script>
+
+</div>
+<div class="lma" style="width: 1000px">
+    <div class="lma1">
+        <div class="lma1_a">走进<span class="c_lv">仙德科技</span></div>
+        <dl class="lma1_b">
+            <dt>
+                <a href="javascript:;" th:href="@{'/about'}">
+                    <img th:attr="src=@{'/dbna/img/img.jpg'}" width="250" height="195"/>
+                </a>
+            </dt>
+            <dd>
+                <h6>仙德科技：生态空调技术引领者</h6>
+                成都仙德科技有限公司，是中国（四川）自由贸易试验区成都高新区入驻的一家专注于研发、生产、销售声能空调的创新型高新技术企业。
+                <p> 公司研发生产销售的声能家用、商用以及特种环境下使用的声能空调，其独家拥有的声能空调压缩机技术，为全球首创 . . .
+                    <span class="c_hs">
+                        [<a th:href="@{'/about'}"> 详情 </a>]
+                    </span>
+                </p>
+            </dd>
+        </dl>
+    </div>
+    <div class="lma2">
+        <div class="lma1_a">
+            <bdo>新闻资讯</bdo>
+            <em>
+                <a href="javascript:;" th:href="@{'/newlist'}">更多新闻</a>
+            </em>
+        </div>
+        <ul class="lma2a">
+            <li th:each="news,index:${newsPage}">
+                <a th:href="@{/news-find(id=${news.id},newsType=${news.newsType})}">
+                    <strong id="text1" th:text="${news.headline}"></strong>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="lmb">
+    <div class="lmb1">
+        <bdo>
+            <img th:attr="src=@{'/dbna/img/lma.jpg'}"/>
+        </bdo>
+        <em>
+            <a href="javascript:;" th:href="@{'/product-list'}">更多产品</a>
+        </em>
+    </div>
+    <div class="lmb2">
+        <dl class="cp" th:each="item,index:${productPage}">
+            <dt>
+                <a th:href="@{/product-find(id=${item.id},productType=${item.productType})}">
+                    <img th:src="${item.thumbnail}" border='0'
+                         width='280' height='180' alt=''>
+                </a>
+            </dt>
+            <dd>
+                <a th:text="${item.headline}"
+                   th:href="@{/product-find(id=${item.id},productType=${item.productType})}">
+                </a>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="fotr">
+    <a th:href="@{'/index'}">首页</a> |
+    <a th:href="@{'/about'}">关于我们</a> |
+    <a th:href="@{'/airlist'}">五恒空调</a> |
+    <a th:href="@{'/newlist'}">新闻资讯</a> |
+    <a th:href="@{'/product-list'}">产品展示</a> |
+    <a th:href="@{'/project-list'}">工程案例</a> |
+    <a th:href="@{'/video-list'}">视频展播</a> |
+    <a th:href="@{'/contact-us'}">联系我们</a>
+</div>
+
+<div class="fotr_a">
+    <p>版权所有：成都仙德科技有限公司 Copyright 2019 @ All Serviced 蜀ICP备19014083号-1</p>
+    <!--<p>服务热线：400-0896-897 营销中心电话：028-83355015</p>-->
+</div>
+<div align="center">
+    <div><img th:attr="src=@{'/dbna/img/2-1FZF03JK04.gif'}" alt=""/></div>
+</div>
+<!-- js部分 -->
+<script th:attr="src=@{'/dist/js/jquery.js'}" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

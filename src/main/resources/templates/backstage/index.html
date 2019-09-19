@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <title>仙德管理系统</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{'/assets/libs/layui/css/layui.css'}"/>
+    <link rel="stylesheet" th:href="@{'/assets/css/admin.css'}"/>
+    <link th:attr="src=@{'/assets/images/logo1.png'}" rel="SHORTCUT ICON">
+    <link rel="icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+
+    <!-- 头部 -->
+    <div class="layui-header">
+        <div class="layui-logo">
+            <img th:attr="src=@{'/assets/images/logo1.png'}"/>
+            <cite>&nbsp;成都仙德&emsp;</cite>
+        </div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item" lay-unselect>
+                <a ew-event="flexible" title="侧边伸缩"><i class="layui-icon layui-icon-shrink-right"></i></a>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a ew-event="refresh" title="刷新"><i class="layui-icon layui-icon-refresh-3"></i></a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item" lay-unselect>
+                <a id="btnMessage" title="消息"><i class="layui-icon layui-icon-notice"></i></a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a ew-event="fullScreen" title="全屏"><i class="layui-icon layui-icon-screen-full"></i></a>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a>
+                    <img th:attr="src=@{'/assets/images/logo1.png'}" class="layui-nav-img">
+                    <!--<cite th:text="${role}+' '+${account}">管理员</cite>-->
+                    <cite th:text="${account}">管理员</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd lay-unselect>
+                        <a id="setInfo">个人信息</a>
+                    </dd>
+                    <dd lay-unselect>
+                        <a id="setPsw">修改密码</a>
+                    </dd>
+                    <hr>
+                    <dd lay-unselect>
+                        <a id="btnLogout">退出</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-unselect>
+                <a ew-event="theme" title="主题"><i class="layui-icon layui-icon-more-vertical"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="layui-side">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="admin-side-nav" lay-accordion="true"
+                style="margin: 15px 0;">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-home"></i>&emsp;<cite>Dashboard</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/welcome'}">欢迎页</a></dd>
+                    </dl>
+                </li>
+                <!---------------------------------------------------------->
+                <!--<li class="layui-nav-item">-->
+                <!--<a href="javascript:;"><i class="layui-icon layui-icon-user"></i>&emsp;<cite>关于我们</cite></a>-->
+                <!--<dl class="layui-nav-child">-->
+                <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/user-index'}">走进仙德</a></dd>-->
+                <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/user-index'}">公司文化</a></dd>-->
+                <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/user-index'}">设备展示</a></dd>-->
+                <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/user-index'}">生产环境</a></dd>-->
+                <!--</dl>-->
+                <!--</li>-->
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-user"></i>&emsp;<cite>五恒空调</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/air-list'}">五恒空调/空调常识</a></dd>
+                        <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/mqtt-index'}">空调常识</a></dd>-->
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-user"></i>&emsp;<cite>新闻资讯</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/news-list'}">公司动态/行业资讯</a></dd>
+                        <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/news-list'}">行业资讯</a></dd>-->
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-user"></i>&emsp;<cite>产品展示</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/product-list'}">产品展示</a></dd>
+                        <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/mqtt-index'}">空气处理</a></dd>-->
+                        <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/mqtt-index'}">冷热源</a></dd>-->
+                        <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/mqtt-index'}">配套组件</a></dd>-->
+                        <!--<dd><a href="javascript:;" th:attr="lay-href=@{'/bg/mqtt-index'}">智能控制</a></dd>-->
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-user"></i>&emsp;<cite>工程案例</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/project-list'}">工程案例</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-user"></i>&emsp;<cite>视频展播</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/video-list'}">视频展播</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-user"></i>&emsp;<cite>联系我们</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/contact-us-list'}">公司信息</a></dd>
+                    </dl>
+                </li>
+                <!------------------------------------------------------------------------------------>
+
+
+                <!--<li class="layui-nav-item" th:if="${#arrays.contains(permissions, 'view:sys')}">-->
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-set"></i>&emsp;<cite>系统管理</cite></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/sys-user'}">用户管理</a></dd>
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/sys-role'}">角色管理</a></dd>
+                        <dd><a href="javascript:;" th:attr="lay-href=@{'/bg/sys-permission'}">权限管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 主体部分 -->
+    <div class="layui-body">
+        <div class="layui-tab" lay-allowClose="true" lay-filter="admin-pagetabs">
+            <ul class="layui-tab-title">
+            </ul>
+            <div class="layui-tab-content">
+            </div>
+        </div>
+        <div class="layui-icon admin-tabs-control layui-icon-prev" ew-event="leftPage"></div>
+        <div class="layui-icon admin-tabs-control layui-icon-next" ew-event="rightPage"></div>
+        <div class="layui-icon admin-tabs-control layui-icon-down">
+            <ul class="layui-nav admin-tabs-select" lay-filter="admin-pagetabs-nav">
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;"></a>
+                    <dl class="layui-nav-child layui-anim-fadein">
+                        <dd ew-event="closeThisTabs" lay-unselect><a href="javascript:;">关闭当前标签页</a></dd>
+                        <dd ew-event="closeOtherTabs" lay-unselect><a href="javascript:;">关闭其它标签页</a></dd>
+                        <dd ew-event="closeAllTabs" lay-unselect><a href="javascript:;">关闭全部标签页</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="layui-footer">
+        Copyright © 2019 <a href="http://www.cdzic.net/" target="_blank">仙德官网后台管理系统</a> All rights reserved.
+        <span class="pull-right">Version 3.0.4</span>
+    </div>
+
+    <!-- 手机屏幕遮罩层 -->
+    <div class="site-mobile-shade"></div>
+
+</div>
+
+<!-- 加载动画，移除位置在common.js中 -->
+<div class="page-loading">
+    <div class="rubik-loader"></div>
+</div>
+
+<!-- js部分 -->
+<script type="text/javascript" th:attr="src=@{'/assets/libs/layui/layui.js'}"></script>
+<script type="text/javascript" th:attr="src=@{'/assets/js/common.js'}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var path = [[${path}]];
+    var account = [[${account}]];
+    /*]]>*/
+    layui.use(['layer', 'element', 'admin', 'index'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var index = layui.index;
+
+        // 默认加载主页
+        index.loadView({
+            menuPath: path + '/bg/welcome',
+            menuName: '<i class="layui-icon layui-icon-home"></i>'
+        });
+
+        // 消息点击事件
+        $('#btnMessage').click(function () {
+            admin.popupRight({
+                type: 2,
+                content: path + '/bg/tpl-message'
+            });
+        });
+
+        // 修改密码点击事件
+        $('#setPsw').click(function () {
+            admin.open({
+                type: 2,
+                title: '修改密码',
+                area: ['380px', '290px'],
+                content: path + '/bg/tpl-password'
+            });
+        });
+
+        // 退出登录点击事件
+        $('#btnLogout').click(function () {
+            layer.confirm('确定退出登录？', function () {
+                location.replace(path + '/bg/logout');
+            });
+        });
+
+        // 个人信息点击事件
+        $('#setInfo').click(function () {
+
+        });
+
+    });
+</script>
+</body>
+
+</html>

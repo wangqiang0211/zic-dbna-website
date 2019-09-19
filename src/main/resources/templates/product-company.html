@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>产品展示_成都仙德科技有限公司</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link th:href="@{'/dbna/css/style.css'}" rel="stylesheet" type="text/css"/>
+    <link rel="icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <style>a {
+        color: #000;
+    }</style>
+</head>
+<body>
+<div class="logo">
+    <div class="logo_l">
+        <img height="67" th:attr="src=@{'/dbna/img/logo1.png'}" alt="" width="394"/>
+    </div>
+    <div class="logo_r">
+        <ul class="logo_r1">
+            <li>
+                <span>
+                    <img height="11" th:attr="src=@{'/dbna/img/l_1.png'}" width="13"/>
+                </span>
+                <a href="javascript:;" th:href="@{'/contact-us'}">联系我们</a></li>
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_2.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--&lt;!&ndash;<a href="javascript:window.external.AddFavorite('index.htm'/*tpa=http://www.scdebeina.com/*/,'成都仙德智诚实业有限公司')">加入收藏</a>&ndash;&gt;-->
+            <!--<a href="#">加入收藏</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_3.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--&lt;!&ndash;<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('index.htm'/*tpa=http://www.scdebeina.com/*/);">设为首页</a>&ndash;&gt;-->
+            <!--<a href="#">设为首页</a>-->
+            <!--</li>-->
+        </ul>
+        <div class="logo_r2">
+            <p>
+                <span th:text="${person.usValue}"></span>
+                <bdo th:text="${person.usKey}"></bdo>
+                <span th:text="${hotline.usValue}"></span>
+                <bdo th:text="${hotline.usKey}"> </bdo>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="dh">
+    <ul>
+        <ul>
+            <li>
+                <a href="javascript:;" th:href="@{'/index'}">首页</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/about'}">关于我们</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/airlist'}">五恒空调</a>
+            </li>
+            <li>
+                <a href="javascript:;" th:href="@{'/newlist'}">新闻资讯</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/product-list'}">产品展示</a>
+            </li>
+            <li>
+                <a href="javascript:;" th:href="@{'/project-list'}">工程案例</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/video-list'}">视频展播</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/contact-us'}">联系我们</a></li>
+        </ul>
+    </ul>
+</div>
+<!-- /header -->
+<div class="l_banner" th:style="'background:url(' + @{'/dbna/img/l_banner.jpg'} + ');'">
+    <div class="l_bt">
+        <a th:href="@{'/product-list'}">产品展示</a>
+    </div>
+</div>
+<div class="nr">
+    <div class="gl_a">
+        <bdo> <a class="arrow" th:href="@{'/product-company?productType=0'}">空气处理</a></bdo>
+        <bdo> <a class="arrow" th:href="@{'/product-company?productType=1'}">冷热源</a> </bdo>
+        <bdo> <a class="arrow" th:href="@{'/product-company?productType=2'}">配套组件</a></bdo>
+        <bdo> <a class="arrow" th:href="@{'/product-company?productType=3'}">智能控制</a></bdo>
+        <br/><br/>
+    </div>
+
+    <dl class="cp" th:each="product:${newsPage.list}">
+        <dt><a th:href="@{/product-find(id=${product.id},productType=${product.productType})}">
+            <img th:src="${product.thumbnail}"
+                 border='0' width='280'
+                 height='180' alt=''></a></dt>
+        <dd><a th:href="@{/product-find(id=${product.id},productType=${product.productType})}"
+               th:text="${product.headline}"></a>
+        </dd>
+    </dl>
+
+    <!--原网站的样式-->
+    <!--<div class="ym">-->
+    <!--<span class="pagination" style="text-align: center;font-size: 20px">-->
+    <!--<span>-->
+    <!--<a th:if="${not isFirstPage}"-->
+    <!--th:href="@{${'/product-company'}(pageNum=${pageNum-1},productType=${productType})}"-->
+    <!--aria-label="Previous">-->
+    <!--<span aria-hidden="true">上一页</span>-->
+    <!--</a>-->
+    <!--<a th:if="${isFirstPage}" href="javascript:void(0);" aria-label="Previous">-->
+    <!--<span aria-hidden="true">上一页</span>-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span th:each="pageNo : ${#numbers.sequence(1, totalPages)}">-->
+    <!--<a th:if="${pageNum eq pageNo}" href="javascript:void(0);">-->
+    <!--<span th:text="${pageNo}"></span>-->
+    <!--</a>-->
+    <!--<a th:if="${not (pageNum eq pageNo)}"-->
+    <!--th:href="@{${'/product-company'}(pageNum=${pageNo},productType=${productType})}">-->
+    <!--<span th:text="${pageNo}"></span>-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span><a th:if="${not isLastPage}"-->
+    <!--th:href="@{${'/product-company'}(pageNum=${pageNum+1},productType=${productType})}"-->
+    <!--aria-label="Next"> <span aria-hidden="true">下一页</span> </a>-->
+    <!--<a th:if="${isLastPage}" href="javascript:void(0);" aria-label="Next">-->
+    <!--<span aria-hidden="true">下一页</span>-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--&nbsp;&nbsp;-->
+    <!--<span>-->
+    <!--第<span th:text="${pageNum}">获得总页数</span>页/-->
+    <!--共<span th:text="${totalPages}">获得总页数</span>页-->
+    <!--(共<span th:text="${total}">获得总页数</span>条数据)-->
+    <!--</span>-->
+    <!--</span>-->
+    <!--</div>-->
+
+    <!--控制分页-->
+    <div class="ym">
+        <ul class="pagination pagination-lg" style="text-align: center;font-size: 18px">
+            <li>
+                <a th:if="${not isFirstPage}"
+                   th:href="@{${'/product-company'}(pageNum=${pageNum-1},productType=${productType})}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+                <a th:if="${isFirstPage}" href="javascript:void(0);" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+            <li th:if="${pageNum-1 >= 1}">
+                <a th:href="@{${'/product-company'}(pageNum=${pageNum-1},productType=${productType})}"
+                   th:text="${pageNum - 1}">1</a>
+            </li>
+            <li class="active">
+                <a href="#" th:text="${pageNum}">1</a>
+            </li>
+            <li th:if="${pageNum+1 <= totalPages}">
+                <a th:if="${not (pageNum eq pageNo)}"
+                   th:href="@{${'/product-company'}(pageNum=${pageNo},productType=${productType})}"
+                   th:text="${pageNum + 1}">1</a>
+            </li>
+            <li>
+                <a th:if="${not isLastPage}"
+                   th:href="@{${'/product-company'}(pageNum=${pageNo},productType=${productType})}"
+                   aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+                <a th:if="${isLastPage}" href="javascript:void(0);" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+            <span class="pagsss">
+                第<span th:text="${pageNum}">获得总页数</span>页/
+                共<span th:text="${totalPages}">获得总页数</span>页
+                (共<span th:text="${total}">获得总页数</span>条数据)
+            </span>
+        </ul>
+    </div>
+
+
+</div>
+
+<div class="fotr">
+    <a th:href="@{'/index'}">首页</a> |
+    <a th:href="@{'/about'}">关于我们</a> |
+    <a th:href="@{'/airlist'}">五恒空调</a> |
+    <a th:href="@{'/newlist'}">新闻资讯</a> |
+    <a th:href="@{'/product-list'}">产品展示</a> |
+    <a th:href="@{'/project-list'}">工程案例</a> |
+    <a th:href="@{'/video-list'}">视频展播</a> |
+    <a th:href="@{'/contact-us'}">联系我们</a>
+</div>
+<div class="fotr_a">
+    <p>
+        版权所有：成都仙德科技有限公司 Copyright 2019 @ All Serviced 蜀ICP备19014083号-1</p>
+    <!--<p>服务热线：400-0896-897 营销中心电话：028-83355015</p>-->
+</div>
+<div align="center">
+    <div><img th:attr="src=@{'/dbna/img/2-1FZF03JK04.gif'}" alt=""/></div>
+</div>
+</body>
+</html>

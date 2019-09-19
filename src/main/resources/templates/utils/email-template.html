@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport content=" width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0,
+          user-scalable=yes" charset="UTF-8"/>
+    <title>Title</title>
+    <style type="text/css">
+        .emailContent {
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 0 auto;
+            width: auto;
+        }
+        .contentTitleImg {
+
+        }
+    </style>
+</head>
+<body>
+<div class="emailContent">
+    <table style="width: 640px;">
+        <tr>
+            <td width="128"></td>
+            <td width="128"></td>
+            <td width="128"></td>
+            <td width="128"></td>
+            <td width="128"></td>
+        </tr>
+        <tr class="contentTitleTr" style="height: 46px;background-color: #4891E1">
+            <td class="contentTitleTd" style="color: white;font-weight: bold;font-size: 18px;" colspan="5">
+                <!--<img class="contentTitleImg" style="margin-left: 2%;width: 38px;margin-top: 4px;" src="cid:companyLogo"/>-->
+                <!--fixme 改src 38*38px-->
+                <img class="contentTitleImg" style="margin-left: 2%;height:38px;width: 38px;margin-top: 4px;"
+                     src="http://www.cdxdkj.net/zic_dbn_log.jpg"/>
+                <!--<img class="contentTitleImg" style="margin-left: 2%;width: 38px;margin-top: 4px;" th:attr="src=@{'/resources/static/assets/images/head.png'}"/>-->
+                <!--<img class="contentTitleImg" style="margin-left: 2%;width: 38px;margin-top: 4px;" src="../../../resources/static/assets/images/head.png"/>-->
+                ${companyName}
+            </td>
+        </tr>
+        <tr style="height: 80px">
+            <td colspan="5" style="font-size: 23px;text-align: center;font-weight: bold">${contentTitle}</td>
+        </tr>
+        <tr style="height: 23px;">
+            <td colspan="5" style="font-size: 15px;text-indent: 2em;font-weight: bold">${contentHead}</td>
+        </tr>
+        <tr>
+            <td colspan="5" style="font-size: 15px;text-indent: 2em;font-weight: bold">
+                ${contentBody}
+            </td>
+        </tr>
+        <tr style="height: 20px">
+
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td style="font-size: 15px;text-align: center;font-weight: bold">${sender}</td>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td style="font-size: 15px;text-align: center;font-weight: bold">${sendDate}</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

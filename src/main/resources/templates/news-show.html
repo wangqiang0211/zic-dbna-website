@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新闻资讯_成都仙德科技有限公司</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link th:href="@{'/dbna/css/style.css'}" rel="stylesheet" type="text/css"/>
+    <link rel="icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <style>a {
+        color: #000;
+    }</style>
+</head>
+<body>
+<div class="logo">
+    <div class="logo_l">
+        <img height="67" th:attr="src=@{'/dbna/img/logo1.png'}" alt="" width="394"/>
+    </div>
+    <div class="logo_r">
+        <ul class="logo_r1">
+            <li>
+                <span>
+                    <img height="11" th:attr="src=@{'/dbna/img/l_1.png'}" width="13"/>
+                </span>
+                <a href="javascript:;" th:href="@{'/contact-us'}">联系我们</a></li>
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_2.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--&lt;!&ndash;<a href="javascript:window.external.AddFavorite('index.htm'/*tpa=http://www.scdebeina.com/*/,'成都仙德智诚实业有限公司')">加入收藏</a>&ndash;&gt;-->
+            <!--<a href="#">加入收藏</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<span>-->
+            <!--<img height="11" th:attr="src=@{'/dbna/img/l_3.png'}" width="13"/>-->
+            <!--</span>-->
+            <!--&lt;!&ndash;<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('index.htm'/*tpa=http://www.scdebeina.com/*/);">设为首页</a>&ndash;&gt;-->
+            <!--<a href="#">设为首页</a>-->
+            <!--</li>-->
+        </ul>
+        <div class="logo_r2">
+            <p>
+                <span th:text="${person.usValue}"></span>
+                <bdo th:text="${person.usKey}"></bdo>
+                <span th:text="${hotline.usValue}"></span>
+                <bdo th:text="${hotline.usKey}"> </bdo>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="dh">
+    <ul>
+        <ul>
+            <li>
+                <a href="javascript:;" th:href="@{'/index'}">首页</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/about'}">关于我们</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/airlist'}">五恒空调</a>
+            </li>
+            <li>
+                <a href="javascript:;" th:href="@{'/newlist'}">新闻资讯</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/product-list'}">产品展示</a>
+            </li>
+            <li>
+                <a href="javascript:;" th:href="@{'/project-list'}">工程案例</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/video-list'}">视频展播</a></li>
+            <li>
+                <a href="javascript:;" th:href="@{'/contact-us'}">联系我们</a></li>
+        </ul>
+    </ul>
+</div>
+
+<div class="l_banner" th:style="'background:url(' + @{'/dbna/img/l_banner.jpg'} + ');'">
+    <div class="l_bt">
+        <a href="javascript:;" th:href="@{'/newlist'}">新闻资讯</a>
+    </div>
+</div>
+<div class="nr" th:each="item:${newsPage.list}">
+    <h1 style="text-align: center;" th:text="${item.headline}">标题</h1>
+    <div class="al_nr">
+        <table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 980px; height: 300px">
+            <tbody>
+            <tr>
+                <td style="text-align: center;">
+                    <div th:utext="${item.articleContent}">内容</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--后台赋值分页-->
+    <div class="al_fot">
+        <div class="al_fotl">上一篇：
+            <span th:if="${pre.title}!='无'">
+                <a th:href="@{/news-find(id=${pre.id},newsType=${pre.thisType})}" th:text="${pre.title}"></a>
+            </span>
+            <span th:if="${pre.title}=='无'">
+                <a th:text="${pre.title}"></a>
+            </span>
+        </div>
+        <div class="al_fotr">下一篇：
+            <span th:if="${next.title}!='完'">
+                 <a th:href="@{/news-find(id=${next.id},newsType=${next.thisType})}" th:text="${next.title}"></a>
+            </span>
+            <span th:if="${next.title}=='完'">
+                <a th:text="${next.title}"></a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="fotr">
+    <a th:href="@{'/index'}">首页</a> |
+    <a th:href="@{'/about'}">关于我们</a> |
+    <a th:href="@{'/airlist'}">五恒空调</a> |
+    <a th:href="@{'/newlist'}">新闻资讯</a> |
+    <a th:href="@{'/product-list'}">产品展示</a> |
+    <a th:href="@{'/project-list'}">工程案例</a> |
+    <a th:href="@{'/video-list'}">视频展播</a> |
+    <a th:href="@{'/contact-us'}">联系我们</a>
+</div>
+
+
+<div class="fotr_a">
+    <p>
+        版权所有：成都仙德科技有限公司 Copyright 2010 @ All Serviced 蜀ICP备19014083号-1</p>
+    <!--<p>服务热线：400-0896-897 营销中心电话：028-83355015</p>-->
+</div>
+<div align="center">
+    <div><img th:attr="src=@{'/dbna/img/2-1FZF03JK04.gif'}" alt=""/></div>
+</div>
+</body>
+</html>

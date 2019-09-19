@@ -1,0 +1,24 @@
+/*小于768*/
+@media screen and (max-width: 768px) {
+    .logoHead{display: none}
+    .stepNewSimg img{margin: 0 auto;display: block}
+    .stepNewSimg{margin-bottom: 10px;}
+    .stepNewStext div:last-child{font-size: 12px}
+    .banner img{width: 100%;height: 100%;}
+    .aboutheadList ul li a,.footerNav a{font-size: 12px}
+    .gswh ul li{width: 46%;}
+    .gswh ul li div{font-size: 12px}
+    .gswh ul li img{width: 80%;}
+    .zouHeadtext{font-size: 12px}
+}
+/*大于768*/
+@media screen and (min-width: 768px) {
+    .navbar-brand{display: none}
+}
+@media screen and (max-width: 1200px) {
+    .navbar-nav>li{padding: 5px 16px !important; }
+
+}
+@media screen and (max-width: 995px) {
+    .navbar-nav>li{padding: 5px 2px !important; }
+}

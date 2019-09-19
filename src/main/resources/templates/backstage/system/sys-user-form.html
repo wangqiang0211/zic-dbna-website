@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html class="bg-white" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加/修改管理员</title>
+    <link rel="stylesheet" th:href="@{'/assets/libs/layui/css/layui.css'}"/>
+    <link rel="stylesheet" th:href="@{'/assets/css/admin.css'}"/>
+    <link rel="icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<body>
+
+<form id="userForm" lay-filter="userForm" class="layui-form model-form">
+    <input name="userId" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-block">
+            <input name="account" placeholder="请输入账号" type="text" class="layui-input" maxlength="20"
+                   lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item input-pwd">
+        <label class="layui-form-label">新密码:</label>
+        <div class="layui-input-block">
+            <input type="password" name="pwd" placeholder="请输入新密码" class="layui-input"
+                   lay-verType="tips" lay-verify="required|psw" required/>
+        </div>
+    </div>
+    <div class="layui-form-item input-pwd">
+        <label class="layui-form-label">确认密码:</label>
+        <div class="layui-input-block">
+            <input type="password" name="rePsw" placeholder="请再次输入新密码" class="layui-input"
+                   lay-verType="tips" lay-verify="required|repsw" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-block">
+            <input name="phoneNum" placeholder="请输入手机号" type="text" class="layui-input"
+                   lay-verify="required|phone" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input name="email" placeholder="请输入邮箱" type="text" class="layui-input" lay-verify="required|email"
+                   required/>
+        </div>
+    </div>
+    <div class="layui-form-item layui-from-role">
+        <label class="layui-form-label">角色</label>
+        <div class="layui-input-block">
+            <select id="selectRole" name="role" lay-filter="selectRole" xm-select="role" lay-verify="required">
+                <option value=""></option>
+                <span th:each="item:${roles}">
+                    <option th:value="${item.roleName}" th:text="${item.roleName}"></option>
+                </span>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item text-right">
+        <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog">取消</button>
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>保存</button>
+    </div>
+</form>
+
+<!-- js部分 -->
+<script type="text/javascript" th:attr="src=@{'/assets/libs/layui/layui.js'}"></script>
+<script type="text/javascript" th:attr="src=@{'/assets/js/common.js'}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var path = [[${path}]];
+    /*]]>*/
+</script>
+<script th:inline="none">
+
+    layui.use(['layer', 'form', 'admin'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        // var formSelects = layui.formSelects;
+        var admin = layui.admin;
+
+        var url = path + '/bg/sys-user/add';  // 实际项目这里是添加用户的url
+        // 回显user数据
+        var user = admin.getTempData('t_user');
+        if (user) {
+            $('input[name="account"]').attr('readonly', 'readonly');
+            url = path + '/bg/sys-user/update';  // 实际项目这里是修改用户的url
+            form.val('userForm', user);
+            $("#selectRole option").each(function () {
+                if (user.role == $(this).text()) {
+                    $(this).attr("selected", true);
+                }
+            });
+            $(".input-pwd").remove();
+            if (null == user.seccondLevelCode) {
+                $(".seccondLevelSelect").remove();
+            }
+            form.render();
+        } else {
+            $(".seccondLevelSelect").remove();
+        }
+        // 表单提交事件
+        form.on('submit(btnSubmit)', function (data) {
+            $.ajax({
+                type: "post",
+                url: url,
+                data: {
+                    account: data.field.account,
+                    pwd: data.field.pwd,
+                    email: data.field.email,
+                    phoneNum: data.field.phoneNum,
+                    role: data.field.role
+                },
+                success: function (data) {
+                    layer.close(loadIndex);
+                    if (100 == data.errorCode) {
+                        top.layer.msg(data.errorMsg, {icon: 1});
+                        admin.putTempData('formOk', true);  // 操作成功刷新表格
+                        // 关闭当前iframe弹出层
+                        admin.closeThisDialog();
+                    } else if (403 == data.errorCode) {
+                        location.reload();
+                    } else {
+                        layer.msg(data.errorMsg, {icon: 2, time: 1500, anim: 6});
+                    }
+                }
+            });
+            return false;
+        });
+
+        // 添加表单验证方法
+        form.verify({
+            psw: function (value, item) {
+                if (!new RegExp("^[a-zA-Z0-9_]{6,12}\$").test(value)) {
+                    return '密码必须6到12位，且不能出现空格和特殊字符';
+                }
+            },
+            repsw: function (value, item) {
+                if (value !== $('#userForm input[name=pwd]').val()) {
+                    return '两次密码输入不一致';
+                }
+            }
+        });
+
+
+        var loadIndex;
+        $.ajaxSetup({
+            beforeSend: function (xhr) {
+                loadIndex = layer.load(2);
+            }, error: function (jqXHR, textStatus, errorMsg) {
+                layer.alert('请求服务器"' + '"时出错[' + jqXHR.status + ']：' + errorMsg, {icon: 5, anim: 6});
+                // layer.alert('发送请求到"' + this.url + '"时出错[' + jqXHR.status + ']：' + errorMsg, {icon: 5,anim:6});
+            }, complete: function (xhr, status) {//status=success/error
+                if ('error' == status) {
+                    layer.close(loadIndex);
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

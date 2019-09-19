@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>联系我们列表</title>
+    <link rel="stylesheet" th:href="@{'/assets/libs/layui/css/layui.css'}"/>
+    <link rel="stylesheet" th:href="@{'/assets/css/admin.css'}"/>
+    <link rel="icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" mce_href="/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<body>
+
+<!-- 页面加载loading -->
+<div class="page-loading">
+    <div class="rubik-loader"></div>
+</div>
+<!-- 正文开始 -->
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+
+            <div class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <!--第一组查询-->
+                    <!--<div class="layui-inline" style="width: 120px;">-->
+                    <!--<select id="sltKey">-->
+                    <!--<option value="">-查询条件-</option>-->
+                    <!--<option value="headline">标题查询</option>-->
+                    <!--<option value="articleContent">内容查询</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="layui-inline">-->
+                    <!--<input id="edtSearch" class="layui-input" type="text" placeholder="输入关键字"/>-->
+                    <!--</div>-->
+                    <div class="layui-inline">
+                        <!--<button id="btnSearch" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>&nbsp;&nbsp;-->
+                        <!--添加按钮-->
+                        <button id="btnAdd" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
+                    </div>
+                </div>
+            </div>
+
+            <table class="layui-table" id="threeLevelTable" lay-filter="threeLevelTable"></table>
+
+        </div>
+    </div>
+
+</div>
+<!-- 表格操作列 -->
+<script type="text/html" id="tableBar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="tableBar1">
+    <input id="{{d.sort}}" name="{{d.sort}}" type="text" style="width: 20px"/>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+</script>
+
+<script type="text/html" id="usKey">
+    {{# if(3 === d.usType){ }}
+    <div class="upload-img layer-photos-demo" style="cursor:pointer;">
+        <img style="height: 25px" src="{{d.usKey}}" lay-tips="微信公众号"/>
+    </div>
+    {{#}else{ }}
+    <input name="usKey" value="{{d.usKey}}" type="text" class="layui-input" style="border:none;"
+           readonly/>
+    {{# }}}
+</script>
+
+<script type="text/html" id="usValue">
+    {{# if(3 === d.usType){ }}
+    <div class="upload-img layer-photos-demo" style="cursor:pointer;">
+        <img style="height: 25px" src="{{d.usValue}}" lay-tips="负责人微信号"/>
+    </div>
+    {{#}else{ }}
+    <input name="usKey" value="{{d.usValue}}" type="text" class="layui-table-cell laytable-cell-1-0-2"
+           style="border:none;" readonly/>
+
+    <!--<div class="layui-table-cell laytable-cell-1-0-2">-->
+    <!--{{d.usValue}}-->
+    <!--</div>-->
+    {{# }}}
+</script>
+
+
+<!-- js部分 -->
+<script type="text/javascript" th:attr="src=@{'/assets/libs/layui/layui.js'}"></script>
+<script type="text/javascript" th:attr="src=@{'/assets/js/common.js'}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var path = [[${path}]];
+    /*]]>*/
+</script>
+
+<script th:inline="none">
+    layui.use(['layer', 'form', 'table', 'util', 'admin'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var util = layui.util;
+        var admin = layui.admin;
+
+        // 渲染表格
+        table.render({
+            elem: '#threeLevelTable',
+            url: path + '/bg/contact-us-page',
+            parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.errorCode, //解析接口状态
+                    "msg": res.errorMsg, //解析提示文本
+                    "count": res.respObj.total, //解析数据长度
+                    "data": res.respObj.items //解析数据列表
+                };
+            },
+            response: {
+                statusCode: 100 //规定成功的状态码，默认：0
+            },
+            done: function (res, curr, count) { //表格数据加载完后的事件
+                //调用示例
+                layer.photos({//点击图片弹出
+                    photos: '.layer-photos-demo'
+                    , anim: 1 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+                });
+            },
+            // toolbar: true,//显示：筛选列、导出、打印 功能
+            page: true,
+            // height: '500',
+            loading: true,
+            title: '公司信息表',
+            size: 'lg',
+            cols: [[
+                {field: 'id', title: 'ID', align: 'center', hide: true},
+                {field: 'usKey', title: '信息Key值', align: 'center', templet: "#usKey"},
+                {field: 'usValue', title: '信息Value值', align: 'center', templet: "#usValue"},
+                {
+                    title: '信息类型', align: 'center', templet: function (d) {
+                        if (0 === d.usType) {
+                            return "公司信息";
+                        } else if (1 === d.usType) {
+                            return "地图信息";
+                        } else if (2 === d.usType) {
+                            return "路线信息";
+                        } else if (3 === d.usType) {
+                            return "二维码信息";
+                        } else {
+                            return "";
+                        }
+                    }
+                },
+                {field: 'sort', title: '信息排序', align: 'center'},
+                {
+                    templet: function (d) {
+                        return util.toDateString(d.createDate);
+                    }, title: '创建时间', align: 'center'
+                },
+                {fixed: 'right', title: '操作', align: 'center', align: 'center', toolbar: '#tableBar'}
+            ]]
+        });
+
+        // /contact/sort/update
+        // 添加按钮点击事件
+        $('#btnAdd').click(function () {
+            showEditModel();
+        });
+
+        // 搜索按钮点击事件
+        $('#btnSearch').click(function () {
+            var key = $('#sltKey').val();
+            var value = $('#edtSearch').val();
+            table.reload('threeLevelTable', {
+                where: {
+                    searchKey: key,
+                    searchValue: value
+                }
+            });
+        });
+
+
+        // 工具条点击事件
+        table.on('tool(threeLevelTable)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            if (layEvent === 'edit') { // 修改
+                showEditModel(data);
+            } else if (layEvent === 'del') { // 删除
+                doDelete(obj);
+            }
+        });
+
+
+        // 删除
+        var loadIndex;
+
+        function doDelete(obj) {
+            top.layer.confirm('确定要删除吗？', function (index) {
+                var ids = obj.data.id;
+                top.layer.close(index);
+                $.ajax({
+                    type: "post",
+                    url: path + "/bg/contact/us/delete",
+                    data: {
+                        id: ids
+                    },
+                    beforeSend: function (xhr) {
+                        loadIndex = layer.load(2);
+                    },
+                    success: function (data) {
+                        layer.close(loadIndex);
+                        if (100 == data.errorCode) {
+                            table.reload('threeLevelTable');
+                        } else if (403 == data.errorCode) {
+                            location.reload();
+                        } else {
+                            layer.msg(data.errorMsg, {icon: 2, time: 1500, anim: 6});
+                        }
+                    }, error: function (jqXHR, textStatus, errorMsg) {
+                        layer.alert('请求服务器' + '时出错[' + jqXHR.status + ']：' + errorMsg, {icon: 5, anim: 6});
+                        // layer.alert('发送请求到"' + this.url + '"时出错[' + jqXHR.status + ']：' + errorMsg, {icon: 5,anim:6});
+                    }, complete: function (xhr, status) {//status=success/error
+                        if ('error' == status) {
+                            layer.close(loadIndex);
+                        }
+                    }
+                });
+            });
+        }
+
+
+        // 显示表单弹窗
+        function showEditModel(data) {
+            admin.putTempData('t_three_level', data);
+            admin.putTempData('formOk', false);
+            top.layui.admin.open({
+                type: 2,
+                title: data ? '修改' : '添加',
+                area: data ? ['900px', '750px'] : ['900px', '750px'],
+                content: path + '/bg/contact-us-from',
+                end: function () {
+                    admin.getTempData('formOk') && table.reload('threeLevelTable');  // 成功刷新表格
+                }
+            });
+        }
+
+    });
+</script>
+
+</body>
+</html>

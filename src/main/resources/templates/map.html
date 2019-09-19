@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具"/>
+    <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图"/>
+    <title>百度地图API自定义地图</title>
+    <!--引用百度地图API-->
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .iw_poi_title {
+            color: #CC5522;
+            font-size: 14px;
+            font-weight: bold;
+            overflow: hidden;
+            padding-right: 13px;
+            white-space: nowrap
+        }
+
+        .iw_poi_content {
+            font: 12px arial, sans-serif;
+            overflow: visible;
+            padding-top: 4px;
+            white-space: -moz-pre-wrap;
+            word-wrap: break-word
+        }
+    </style>
+
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=zghn8werGV8yCG0YaKgL5M3fnjlKkOlS">
+    </script>
+    <script type="text/javascript"
+            src="https://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="https://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css"/>
+
+</head>
+
+<body>
+<!--地图信息简介-->
+<div style="width:500px;height:190px;border:#ccc solid 1px;">
+    <h4 align="center" style="width:500px;height:30px;border:#ccc solid 1px;">地图名片</h4>
+    <div th:each="news:${newsPage1.list}">
+        <p style="height: 20px">
+            <span style="font-size:11px;" th:text="${news.usKey}"></span>
+            <span style="font-size:11px;" th:text="${news.usValue}"></span>
+        </p>
+    </div>
+</div>
+<!--百度地图容器-->
+<div style="width:500px;height:360px;border:#ccc solid 1px;" id="dituContent">
+</div>
+<!--乘车路线-->
+<div style="width:500px;height:220px;border:#ccc solid 1px;">
+    <h4 align="center" style="width:500px;height:30px;border:#ccc solid 1px;">附近公交或地铁</h4>
+    <div th:each="news:${newsPage3.list}">
+        <p>
+            <span style="font-size:13px;" th:text="${news.usKey}"></span>
+            <span style="font-size:13px;" th:text="${news.usValue}"></span>
+        </p>
+    </div>
+    <style>
+        .zb div {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+            border-top: none
+        }
+
+        .zb div:nth-child(2) {
+            border-right: none;
+            border-left: none;
+        }
+    </style>
+
+</div>
+</body>
+
+<script type="text/javascript">
+    var map = new BMap.Map('dituContent');
+    var poi = new BMap.Point(104.062273, 30.555467);
+    map.centerAndZoom(poi, 18);
+    map.enableScrollWheelZoom();
+
+    var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+        '<img src="" alt=""style = "float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;" / > ' +
+        '<br />成都仙德科技有限公司位于武侯区益州大道722号宇洲国际酒店11楼' +
+        '</div>';
+
+    //创建检索信息窗口对象
+    var searchInfoWindow = null;
+    searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+        title: "成都仙德科技有限公司", //标题
+        width: 290, //宽度
+        height: 105, //高度
+        panel: "panel", //检索结果面板
+        enableAutoPan: true, //自动平移
+        searchTypes: [
+            BMAPLIB_TAB_SEARCH, //周边检索
+            BMAPLIB_TAB_TO_HERE, //到这里去
+            BMAPLIB_TAB_FROM_HERE //从这里出发
+        ]
+    });
+    var marker = new BMap.Marker(poi); //创建marker对象
+    marker.enableDragging(); //marker可拖拽
+    searchInfoWindow.open(marker);
+    map.addOverlay(marker); //在地图中添加marker
+
+    //创建和初始化地图函数：
+    function initMap() {
+        setMapEvent(); //设置地图事件
+        addMapControl(); //向地图添加控件
+    }
+
+    //地图事件设置函数：
+    function setMapEvent() {
+        map.enableDragging(); //启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom(); //启用地图滚轮放大缩小
+        map.enableDoubleClickZoom(); //启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard(); //启用键盘上下左右键移动地图
+    }
+
+    //地图控件添加函数：
+    function addMapControl() {
+        //向地图中添加缩放控件
+        var ctrl_nav = new BMap.NavigationControl({
+            anchor: BMAP_ANCHOR_TOP_LEFT,
+            type: BMAP_NAVIGATION_CONTROL_LARGE
+        });
+        map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+        var ctrl_ove = new BMap.OverviewMapControl({
+            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+            isOpen: 1
+        });
+        map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+        var ctrl_sca = new BMap.ScaleControl({
+            anchor: BMAP_ANCHOR_BOTTOM_LEFT
+        });
+        map.addControl(ctrl_sca);
+    }
+
+
+    initMap(); //创建和初始化地图
+</script>
+
+</html>
